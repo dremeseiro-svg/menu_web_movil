@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TRIGRAMA VII - EL UMBRAL / Sociedad Errante</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --accent-color: #555555;
+            --overlay-bg: rgba(255, 255, 255, 0.98);	
+			
+        }
+/* ============================================================
+   INICIO BLOQUE CSS BOTÓN RETORNO
+   ============================================================ */
+#back-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 99999;
+    background: #fff;
+    border: 1px solid #000;
+    padding: 10px 15px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #000;
+    box-shadow: 2px 2px 0px #000;
+    transition: all 0.2s ease;
+}
+#back-button:hover { 
+    background: #000; 
+    color: #fff; 
+    box-shadow: 0px 0px 0px #000; 
+    transform: translateY(2px); 
+}
+@media (max-width: 480px) {
+    #back-button { top: 15px; right: 15px; padding: 8px 10px; font-size: 9px; }
+}
+@media print { 
+    #back-button { display: none !important; } 
+}
+/* ============================================================
+   FIN BLOQUE CSS BOTÓN RETORNO
+   ============================================================ */
+
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0; padding: 0;
+            font-family: 'Lato', sans-serif;
+            font-size: 18px;
+            -webkit-font-smoothing: antialiased;
+            counter-reset: page;
+            overflow-x: hidden;
+        }
+
+        .container { width: 100%; max-width: 600px; margin: 0 auto; }
+
+        .page-wrapper {
+            width: 100%; min-height: 100vh;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            box-sizing: border-box; padding: 60px 20px;
+            position: relative; counter-increment: page;
+        }
+
+        .content-wrapper { width: 100%; text-align: justify; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; letter-spacing: 3px; margin-bottom: 10px; text-align: center; }
+        h3 { font-family: 'Lato', sans-serif; font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 30px; text-align: center; color: var(--accent-color); }
+        p { line-height: 1.6; margin-bottom: 20px; font-weight: 300; }
+        
+        .img-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem; font-weight: bold;
+            letter-spacing: 4px; text-transform: uppercase;
+            margin-bottom: 25px; text-align: center;
+        }
+
+        .page-number {
+            position: absolute; bottom: 20px; right: 20px;
+            font-size: 0.7rem; color: var(--accent-color);
+            letter-spacing: 2px;
+        }
+        .page-number::after { content: counter(page); }
+
+        .img-box { width: 100%; margin-bottom: 25px; cursor: zoom-in; }
+        img { width: 100%; height: auto; display: block; box-shadow: 0 4px 15px rgba(0,0,0,0.07); }
+
+        .narrative-text {
+            width: 100%; font-family: 'Playfair Display', serif;
+            font-style: italic; font-size: 1.05rem;
+            line-height: 1.6; color: #333; text-align: justify;
+            border-left: 2px solid var(--accent-color);
+            padding-left: 15px; box-sizing: border-box;
+        }
+
+        .print-btn {
+            display: inline-block;
+            margin: 40px 0 20px 0;
+            padding: 12px 25px;
+            border: 1px solid var(--text-color);
+            color: var(--text-color);
+            background: none;
+            cursor: pointer;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        .print-btn:hover { background-color: var(--text-color); color: var(--bg-color); }
+
+        /* --- VISOR MAESTRO SINCRONIZADO (EL ACORDADO) --- */
+        #visor-overlay {
+            display: none; position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--overlay-bg); z-index: 1000;
+            flex-direction: column; justify-content: center; align-items: center;
+        }
+
+        .visor-content { display: flex; flex-direction: column; align-items: center; width: 90vw; max-width: 600px; text-align: center; }
+        #visor-img { max-height: 45vh; width: auto; max-width: 100%; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.1); margin-bottom: 15px; }
+        #visor-title { font-family: 'Playfair Display', serif; font-size: 0.8rem; font-weight: bold; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+        #visor-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.95rem; color: #333; margin-bottom: 20px; padding: 0 10px; }
+        
+        .nav-controls { display: flex; justify-content: center; gap: 40px; margin-bottom: 25px; }
+        .nav-btn { background: none; border: 1px solid #ddd; border-radius: 50%; width: 40px; height: 40px; font-size: 1rem; color: var(--accent-color); cursor: pointer; display: flex; justify-content: center; align-items: center; }
+        .close-btn-bottom { background: none; border: 1px solid var(--accent-color); color: var(--accent-color); padding: 8px 18px; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; }
+
+        footer { width: 100%; padding: 40px 0; border-top: 0.5px solid #eee; margin-top: 40px; }
+        .copyright { font-size: 0.65rem; color: var(--accent-color); letter-spacing: 1px; text-transform: uppercase; line-height: 1.8; text-align: center; }
+        .copyright a { color: var(--text-color); text-decoration: none; font-weight: 400; }
+
+        @media print {
+            .print-btn, .nav-controls, .close-btn-bottom, #visor-overlay { display: none !important; }
+            .page-wrapper { page-break-after: always; min-height: 100vh; display: flex !important; }
+            body { background: white; }
+            .container { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<a href="../index.html" id="back-button">↩ MENU</a>
+
+<div class="container">
+    <section class="page-wrapper">
+        <div class="content-wrapper">
+           <h2 style="margin-top: 20px;">Sociedad Errante</h2>
+           <h3>EL UMBRAL · Trigrama VII</h3> 
+           
+           <p>La presente serie se articula en torno al concepto de Trigrama: una unidad narrativa mínima compuesta por tres estaciones visuales y tres breves soplos de lenguaje. Inspirados en la síntesis del haiku y en la simbología de los elementos, estos trípticos no buscan documentar un lugar, sino cartografiar la experiencia de la <em>dérive</em> (deriva).</p>
+
+           <div style="margin-top: 40px;">
+               <h3>La Estética del Rastro</h3>
+               <p style="font-size: 1rem;">Mi trabajo se asienta en el barrido manual y el desenfoque deliberado. Al eliminar el detalle anecdótico, obligo a la imagen a revelar su esencia más pura y emocional.</p>
+                
+               <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
+                   <h3 style="margin-top: 0;">Técnica BULD</h3>
+                   <p style="font-family: 'Lato'; font-size: 0.85rem; color: #555;">Metodología: Fotografía digital de larga exposición (ICM).<br>
+                   <span style="letter-spacing: 2px; font-weight: 700;">SONY ILCE-6000 | MODO BULB</span></p>
+               </div>
+           </div>
+        </div>
+        <div class="page-number"></div>
+    </section>
+
+    <section class="page-wrapper">
+        <div class="img-title">Presencias</div>
+        <div class="img-box" onclick="openVisor(0)">
+            <img src="image1.jpg" alt="I">
+        </div>
+        <div class="narrative-text">Un sentimiento extraño, hasta sospechoso, donde el rasgo se desvanece y comienza la identidad.</div>
+        <div class="page-number"></div>
+    </section>
+
+    <section class="page-wrapper">
+        <div class="img-title">El Centro</div>
+        <div class="img-box" onclick="openVisor(1)">
+            <img src="image2.jpg" alt="II">
+        </div>
+        <div class="narrative-text">La materia se rinde al movimiento.</div>
+        <div class="page-number"></div>
+    </section>
+
+    <section class="page-wrapper">
+        <div class="img-title">El silencio</div>
+        <div class="img-box" onclick="openVisor(2)">
+            <img src="image3.jpg" alt="III">
+        </div>
+        <div class="narrative-text">Perderse por los caminos desconocidos. Un paisaje que solo existe en la mirada de quien observa.</div>
+        <div class="page-number"></div>
+    </section>
+
+    <section class="page-wrapper">
+        <div class="img-title">Latidos</div>
+        <div class="img-box" onclick="openVisor(3)">
+            <img src="image4.jpg" alt="IV">
+        </div>
+        <div class="narrative-text">Que duro es el sueño de una noche.</div>
+        <div class="page-number"></div>
+        
+        <button onclick="window.print()" class="print-btn">Descargar Dossier PDF</button>
+
+        <footer>
+            <div class="copyright">
+                <a href="mailto:dremeseiro@gmail.com">dremeseiro@gmail.com</a> | 
+                <a href="https://wa.me/34654391870" target="_blank">WhatsApp</a> | 
+                <a href="http://www.danielremeseiro.es" target="_blank">www.danielremeseiro.es</a><br>
+                © DANIEL REMESEIRO · PROYECTO BULD TRIGRAMA VII EL UMBRAL · Febrero 2026<br>
+                A CORUÑA, GALICIA
+            </div>
+        </footer>
+    </section>
+</div>
+
+<div id="visor-overlay">
+    <div class="visor-content">
+        <div id="visor-title"></div>
+        <img id="visor-img" src="" alt="Ampliación">
+        <div id="visor-text"></div>
+        <div class="nav-controls">
+            <button class="nav-btn" onclick="changeImg(-1)">&#10094;</button>
+            <button class="nav-btn" onclick="changeImg(1)">&#10095;</button>
+        </div>
+        <button class="close-btn-bottom" onclick="closeVisor()">VOLVER</button>
+    </div>
+</div>
+
+<script>
+    const galleryData = [
+        { src: "image1.jpg", title: "Presencias", text: "Un sentimiento extraño, hasta sospechoso, donde el rasgo se desvanece y comienza la identidad." },
+        { src: "image2.jpg", title: "El Centro", text: "La materia se rinde al movimiento." },
+        { src: "image3.jpg", title: "El silencio", text: "Perderse por los caminos desconocidos. Un paisaje que solo existe en la mirada de quien observa." },
+        { src: "image4.jpg", title: "Latidos", text: "Que duro es el sueño de una noche." }
+    ];
+
+    let currentIndex = 0;
+    function openVisor(index) {
+        currentIndex = index;
+        updateVisor();
+        document.getElementById('visor-overlay').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closeVisor() { 
+        document.getElementById('visor-overlay').style.display = 'none'; 
+        document.body.style.overflow = 'auto';
+    }
+    function changeImg(step) {
+        currentIndex = (currentIndex + step + galleryData.length) % galleryData.length;
+        updateVisor();
+    }
+    function updateVisor() {
+        const data = galleryData[currentIndex];
+        document.getElementById('visor-img').src = data.src;
+        document.getElementById('visor-title').innerText = data.title;
+        document.getElementById('visor-text').innerText = data.text;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TRIGRAMA IX - COCITO / Sociedad Errante</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --accent-color: #555555;
+            --overlay-bg: rgba(255, 255, 255, 0.98);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0; padding: 0;
+            font-family: 'Lato', sans-serif;
+            font-size: 18px;
+            -webkit-font-smoothing: antialiased;
+            counter-reset: page;
+            overflow-x: hidden;
+        }
+
+        .container { width: 100%; max-width: 600px; margin: 0 auto; }
+
+        .page-wrapper {
+            width: 100%; min-height: 100vh;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            box-sizing: border-box; padding: 60px 20px;
+            position: relative; counter-increment: page;
+        }
+
+        .content-wrapper { width: 100%; text-align: justify; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; letter-spacing: 3px; margin-bottom: 10px; text-align: center; }
+        h3 { font-family: 'Lato', sans-serif; font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 30px; text-align: center; color: var(--accent-color); }
+        
+        .img-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem; font-weight: bold;
+            letter-spacing: 4px; text-transform: uppercase;
+            margin-bottom: 25px; text-align: center;
+        }
+
+        .img-box { width: 100%; margin-bottom: 25px; cursor: zoom-in; }
+        img { width: 100%; height: auto; display: block; box-shadow: 0 4px 15px rgba(0,0,0,0.07); }
+
+        .narrative-text {
+            width: 100%; font-family: 'Playfair Display', serif;
+            font-style: italic; font-size: 1.05rem;
+            line-height: 1.6; color: #333; text-align: justify;
+            border-left: 2px solid var(--accent-color);
+            padding-left: 15px; box-sizing: border-box;
+        }
+
+        .page-number {
+            position: absolute; bottom: 20px; right: 20px;
+            font-size: 0.7rem; color: var(--accent-color);
+            letter-spacing: 2px;
+        }
+        .page-number::after { content: counter(page); }
+
+        /* --- VISOR MAESTRO SINCRONIZADO --- */
+        #visor-overlay {
+            display: none; position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--overlay-bg); z-index: 1000;
+            flex-direction: column; justify-content: center; align-items: center;
+        }
+
+        .visor-content { display: flex; flex-direction: column; align-items: center; width: 90vw; max-width: 600px; text-align: center; }
+        #visor-img { max-height: 45vh; width: auto; max-width: 100%; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.1); margin-bottom: 15px; }
+        #visor-title { font-family: 'Playfair Display', serif; font-size: 0.8rem; font-weight: bold; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; }
+        #visor-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.95rem; color: #333; margin-bottom: 20px; padding: 0 10px; }
+        
+        .nav-controls { display: flex; justify-content: center; gap: 40px; margin-bottom: 25px; }
+        .nav-btn { background: none; border: 1px solid #ddd; border-radius: 50%; width: 40px; height: 40px; font-size: 1rem; color: var(--accent-color); cursor: pointer; display: flex; justify-content: center; align-items: center; }
+        .close-btn-bottom { background: none; border: 1px solid var(--accent-color); color: var(--accent-color); padding: 8px 18px; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; }
+
+        footer { width: 100%; padding: 40px 0; border-top: 0.5px solid #eee; margin-top: 40px; }
+        .copyright { font-size: 0.65rem; color: var(--accent-color); letter-spacing: 1px; text-transform: uppercase; line-height: 1.8; text-align: center; }
+        .copyright a { color: var(--text-color); text-decoration: none; font-weight: 400; }
+
+        .btn-print {
+            display: inline-block; margin: 40px 0 20px 0; padding: 12px 25px;
+            border: 1px solid var(--text-color); color: var(--text-color);
+            background: none; cursor: pointer; font-family: 'Lato', sans-serif;
+            font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;
+        }
+
+        @media print {
+            .btn-print, .nav-controls, .close-btn-bottom, #visor-overlay { display: none !important; }
+            .page-wrapper { page-break-after: always; min-height: 100vh; display: flex !important; }
+            body { background: white; }
+            .container { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <section class="page-wrapper">
+        <div class="content-wrapper">
+           <h2>Sociedad Errante</h2>
+           <h3>COCITO · Trigrama IX</h3> 
+           
+           <div class="img-box" onclick="openVisor(0)">
+               <img src="portada.jpg" alt="COCITO">
+           </div>
+
+           <p style="text-align: center; font-family: 'Playfair Display'; font-style: italic; letter-spacing: 2px;">La traición del hielo</p>
+
+           <div style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px;">
+               <h3 style="margin-top: 0;">Técnica BULD</h3>
+               <p style="font-family: 'Lato'; font-size: 0.85rem; color: #555; text-align: center;">Metodología: Fotografía digital de larga exposición (ICM).<br>
+               <span style="letter-spacing: 2px; font-weight: 700;">SONY ILCE-6000 | MODO BULB</span></p>
+           </div>
+        </div>
+        <div class="page-number"></div>
+    </section>
+
+    <section class="page-wrapper">
+        <div class="img-title">I. CAINA</div>
+        <div class="img-box" onclick="openVisor(1)">
+            <img src="image1.jpg" alt="Caina">
+        </div>
+        <div class="narrative-text">Traidores a los allegados. El primer grado de inmovilidad; sumergidos hasta el cuello en la parálisis del recuerdo.</div>
+        <div class="page-number"></div>
+    </section>
+
+    <section class="page-wrapper">
+        <div class="img-title">II. ANTENORA</div>
+        <div class="img-box" onclick="openVisor(2)">
+            <img src="image2.jpg" alt="Antenora">
+        </div>
+        <div class="narrative-text">Traidores a la patria. Solo la cabeza fuera, enfrentando el viento gélido de la ausencia.</div>
+        <div class="page-number"></div>
+    </section>
+
+    <section class="page-wrapper">
+        <div class="img-title">III. TOLOMEA</div>
+        <div class="img-box" onclick="openVisor(3)">
+            <img src="image3.jpg" alt="Tolomea">
+        </div>
+        <div class="narrative-text">Traidores a los huéspedes. Con los ojos congelados, donde las lágrimas se vuelven cristal.</div>
+        <div class="page-number"></div>
+    </section>
+
+    <section class="page-wrapper">
+        <div class="img-title">IV. JUDECA</div>
+        <div class="img-box" onclick="openVisor(4)">
+            <img src="image4.jpg" alt="Judeca">
+        </div>
+        <div class="narrative-text">Traidores a sus benefactores. Totalmente sumergidos en la transparencia del abismo.</div>
+        <div class="page-number"></div>
+    </section>
+
+    <section class="page-wrapper">
+        <div class="img-title">V. EL HIELO</div>
+        <div class="img-box" onclick="openVisor(5)">
+            <img src="image5.jpg" alt="El Hielo">
+        </div>
+        <div class="narrative-text">El fin de la deriva. Donde el movimiento se detiene definitivamente y la imagen se vuelve cristal.</div>
+        
+        <button onclick="window.print()" class="btn-print">Generar PDF Maestro</button>
+
+        <footer>
+            <div class="copyright">
+                <a href="mailto:dremeseiro@gmail.com">dremeseiro@gmail.com</a> | 
+                <a href="https://wa.me/34654391870" target="_blank">WhatsApp</a> | 
+                <a href="http://www.danielremeseiro.es" target="_blank">www.danielremeseiro.es</a><br>
+                © DANIEL REMESEIRO · PROYECTO BULD TRIGRAMA IX · Febrero 2026<br>
+                A CORUÑA, GALICIA
+            </div>
+        </footer>
+        <div class="page-number"></div>
+    </section>
+</div>
+
+<div id="visor-overlay">
+    <div class="visor-content">
+        <div id="visor-title"></div>
+        <img id="visor-img" src="" alt="Ampliación">
+        <div id="visor-text"></div>
+        <div class="nav-controls">
+            <button class="nav-btn" onclick="changeImg(-1)">&#10094;</button>
+            <button class="nav-btn" onclick="changeImg(1)">&#10095;</button>
+        </div>
+        <button class="close-btn-bottom" onclick="closeVisor()">VOLVER</button>
+    </div>
+</div>
+
+<script>
+    const galleryData = [
+        { src: "portada.jpg", title: "COCITO - PORTADA", text: "LA TRAICIÓN DEL HIELO. Comienzo de la parálisis visual." },
+        { src: "image1.jpg", title: "I. CAINA", text: "Traidores a los allegados. El primer grado de inmovilidad." },
+        { src: "image2.jpg", title: "II. ANTENORA", text: "Traidores a la patria. El frío azota la consciencia." },
+        { src: "image3.jpg", title: "III. TOLOMEA", text: "Traidores a los huéspedes. El dolor se cristaliza en la mirada." },
+        { src: "image4.jpg", title: "IV. JUDECA", text: "Traidores a sus benefactores. La inmersión total en el vacío." },
+        { src: "image5.jpg", title: "V. EL HIELO", text: "El fin de la deriva. La imagen estática del alma." }
+    ];
+
+    let currentIndex = 0;
+    function openVisor(index) {
+        currentIndex = index;
+        updateVisor();
+        document.getElementById('visor-overlay').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+    function closeVisor() { 
+        document.getElementById('visor-overlay').style.display = 'none'; 
+        document.body.style.overflow = 'auto';
+    }
+    function changeImg(step) {
+        currentIndex = (currentIndex + step + galleryData.length) % galleryData.length;
+        updateVisor();
+    }
+    function updateVisor() {
+        const data = galleryData[currentIndex];
+        document.getElementById('visor-img').src = data.src;
+        document.getElementById('visor-title').innerText = data.title;
+        document.getElementById('visor-text').innerText = data.text;
+    }
+</script>
+</body>
+</html>

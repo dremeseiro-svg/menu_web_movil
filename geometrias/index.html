@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GEOMETRÍAS DEL ABISMO EL INFIERNO DE DANTE TRIGRAMA VII 4- DANIEL REMESEIRO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --accent-color: #555555;
+            --overlay-bg: rgba(255, 255, 255, 0.98);
+        }
+
+		
+        /* ============================================================
+           INICIO BLOQUE CSS BOTÓN RETORNO (COPIAR ESTO)
+           ============================================================ */
+        #back-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 99999;
+            background: #fff;
+            border: 1px solid #000;
+            padding: 10px 15px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #000;
+            box-shadow: 2px 2px 0px #000;
+            transition: all 0.2s ease;
+        }
+        #back-button:hover { 
+            background: #000; 
+            color: #fff; 
+            box-shadow: 0px 0px 0px #000; 
+            transform: translateY(2px); 
+        }
+        @media (max-width: 480px) {
+            #back-button { top: 15px; right: 15px; padding: 8px 10px; font-size: 9px; }
+        }
+        @media print { 
+            #back-button { display: none !important; } 
+        }
+        /* ============================================================
+           FIN BLOQUE CSS BOTÓN RETORNO
+           ============================================================ */
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0; padding: 0;
+            font-family: 'Lato', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            counter-reset: page;
+        }
+
+        .container { width: 100%; max-width: 600px; margin: 0 auto; }
+
+        .page-wrapper {
+            width: 100%; min-height: 100vh;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            box-sizing: border-box; padding: 60px 20px;
+            position: relative; counter-increment: page;
+        }
+
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.3rem; letter-spacing: 5px; text-transform: uppercase; text-align: center; margin: 0; }
+        h2 { font-family: 'Playfair Display', serif; font-size: 1.1rem; letter-spacing: 3px; margin-bottom: 10px; text-align: center; font-weight: 700; text-transform: uppercase; }
+        
+        .sub-header { letter-spacing: 12px; font-size: 0.7rem; color: var(--accent-color); margin: 20px 0 40px 0; text-transform: uppercase; text-align: center; }
+
+        .img-box { width: 100%; margin-bottom: 25px; cursor: pointer; position: relative; border: 0.5px solid #eee; }
+        img { width: 100%; height: auto; display: block; }
+
+        .v-line { width: 40px; height: 1px; background: #000; margin: 20px auto; }
+
+        .narrative-text {
+            width: 100%; font-family: 'Lato', sans-serif;
+            font-size: 0.95rem; line-height: 1.8; color: #333; 
+            text-align: center; font-weight: 300;
+        }
+
+        .page-number {
+            position: absolute; bottom: 20px; right: 20px;
+            font-size: 0.7rem; color: var(--accent-color);
+            letter-spacing: 2px; font-weight: 700;
+        }
+        .page-number::after { content: "PÁG. " counter(page); }
+
+        /* --- VISOR MAESTRO --- */
+        #visor-overlay {
+            display: none; 
+            position: fixed;
+            top: 0; left: 0; 
+            width: 100%; height: 100%;
+            background: var(--overlay-bg); 
+            z-index: 9999; /* Máxima prioridad */
+            flex-direction: column; justify-content: center; align-items: center;
+        }
+
+        .visor-content { display: flex; flex-direction: column; align-items: center; width: 90vw; max-width: 600px; text-align: center; }
+        #visor-img { max-height: 55vh; width: auto; max-width: 100%; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        #visor-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: bold; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 10px; color: #000; }
+        #visor-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.95rem; color: #333; margin-bottom: 30px; }
+        
+        .nav-controls { display: flex; justify-content: center; gap: 40px; margin-bottom: 30px; }
+        .nav-btn { background: #000; border: none; border-radius: 50%; width: 44px; height: 44px; font-size: 1rem; color: #fff; cursor: pointer; display: flex; justify-content: center; align-items: center; }
+        .close-btn { background: none; border: 1px solid #000; color: #000; padding: 10px 20px; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; }
+
+        footer { width: 100%; padding: 40px 0; border-top: 0.5px solid #eee; margin-top: 40px; text-align: center; }
+        .copyright { font-size: 0.65rem; color: var(--accent-color); letter-spacing: 1px; text-transform: uppercase; line-height: 1.8; }
+        .copyright a { color: var(--text-color); text-decoration: none; font-weight: 700; }
+
+        .btn-print {
+            margin: 40px 0; padding: 15px 35px; background: #000; color: #fff;
+            border: none; cursor: pointer; font-family: 'Lato';
+            font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;
+        }
+
+        @media print {
+            .btn-print, .nav-controls, .close-btn, #visor-overlay { display: none !important; }
+            .page-wrapper { page-break-after: always; min-height: 100vh; display: flex !important; }
+            body { background: white; }
+            .container { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+<a href="../index.html" id="back-button">↩ MENU</a>
+<div class="container">
+    <section class="page-wrapper">
+        <h1>EL INFIERNO DE DANTE Geometrías del Abismo</h1>
+        <p class="sub-header">DANIEL REMESEIRO</p>
+        <div class="img-box" onclick="openVisor(0)">
+            <img src="image9.jpg" alt="EL UMBRAL">
+        </div>
+        <footer>
+            <div class="copyright">
+                SONY ILCE-6000 | MODO BULB / EXPOSICIÓN MANUAL<br>
+               
+                © DANIEL REMESEIRO | TRIGRAMA VIIIA |Febrero 2026
+            </div>
+        </footer>
+        <div class="page-number"></div>
+    </section>
+
+    <section class="page-wrapper">
+        <div class="img-box" onclick="openVisor(1)"><img src="image1.jpg"></div>
+        <div class="v-line"></div>
+        <h2>I. EL LIMBO: EL DESEO SUSPENDIDO</h2>
+        <div class="narrative-text">El espacio de los que no han sido bautizados por la luz. Un estado de espera eterna donde la imagen se mantiene en una neblina de baja intensidad.</div>
+        <div class="page-number"></div>
+    </section>
+
+    <section class="page-wrapper">
+        <div class="img-box" onclick="openVisor(2)"><img src="image3.jpg"></div>
+        <div class="v-line"></div>
+        <h2>II. LUJURIA: EL TORBELLINO</h2>
+        <div class="narrative-text">Luces que se entrelazan sin descanso, emulando la pasión incesante que arrastra las almas en un ciclo infinito de movimiento y destello.</div>
+        <div class="page-number"></div>
+    </section>
+
+    <section class="page-wrapper">
+        <div class="img-box" onclick="openVisor(3)"><img src="image4.jpg"></div>
+        <div class="v-line"></div>
+        <h2>III. GULA: LA LLUVIA SUCIA</h2>
+        <div class="narrative-text">La pesadez de la existencia bajo una luz degradada. La materia visual se vuelve densa, casi táctil, en una sobreexposición deliberada que satura los sentidos.</div>
+        <div class="page-number"></div>
+    </section>
+
+    <section class="page-wrapper">
+        <div class="img-box" onclick="openVisor(4)"><img src="image6.jpg"></div>
+        <div class="v-line"></div>
+        <h2>IV. AVARICIA: GEOMETRÍAS OPUESTAS</h2>
+        <div class="narrative-text">Choque de fuerzas que intentan retener la luz. Un ciclo sin fin donde la composición lucha por no desvanecerse en el vacío absoluto.</div>
+        <div class="page-number"></div>
+    </section>
+
+    <section class="page-wrapper">
+        <div class="img-box" onclick="openVisor(5)"><img src="image7.jpg"></div>
+        <div class="v-line"></div>
+        <h2>V. LA IRA Y PEREZA</h2>
+        <div class="narrative-text">La luz se vuelve pantano; el odio latente se manifiesta en texturas orgánicas que emergen de la oscuridad urbana, atrapando la mirada errante.</div>
+        <div class="page-number"></div>
+    </section>
+
+    <section class="page-wrapper">
+        <div class="img-box" onclick="openVisor(6)"><img src="image10.jpg"></div>
+        <div class="v-line"></div>
+        <h2>VI. HEREJÍA: EL PENSAMIENTO DESVIADO</h2>
+        <div class="narrative-text">Inscripciones de fuego sobre el vacío. La geometría se rebela contra el orden natural, trazando caminos que se desvían de la norma en un rastro de luz persistente.</div>
+        <div class="page-number"></div>
+    </section>
+
+    <section class="page-wrapper">
+        <div class="img-box" onclick="openVisor(7)"><img src="image5.jpg"></div>
+        <div class="v-line"></div>
+        <h2>VII. VIOLENCIA: TRAZOS DE CORTE</h2>
+        <div class="narrative-text">Composiciones agresivas donde la luz corta el plano como un cuchillo, dividiendo el espacio en fragmentos de memoria fracturada.</div>
+        <div class="page-number"></div>
+    </section>
+
+    <section class="page-wrapper">
+        <div class="img-box" onclick="openVisor(8)"><img src="image8.jpg"></div>
+        <div class="v-line"></div>
+        <h2>VIII. FRAUDE: LA ARQUITECTURA QUE MIENTE</h2>
+        <div class="narrative-text">Puentes de luz que se quiebran. La realidad se desdobla en geometrías imposibles, revelando la fragilidad de nuestra percepción.</div>
+        <div class="page-number"></div>
+    </section>
+
+    <section class="page-wrapper">
+        <div class="img-box" onclick="openVisor(9)"><img src="image2.jpg"></div>
+        <div class="v-line"></div>
+        <h2>IX. TRAICIÓN: EL HIELO DEL COCITO</h2>
+        <div class="narrative-text">El frío absoluto. Donde el movimiento se detiene definitivamente y la deriva se cristaliza en una imagen estática, eterna y gélida del alma.</div>
+        <div class="page-number"></div>
+    </section>
+
+    <section class="page-wrapper">
+        <h2>LA GEOMETRÍA DEL SILENCIO</h2>
+        <div class="narrative-text" style="font-style: italic; max-width: 85%; margin-top: 20px;">
+            Con la clausura de la novena puerta, Daniel Remeseiro completa un manifiesto sobre la percepción. El recorrido culmina en la parálisis del Cocito, el lago helado donde el movimiento se detiene.
+        </div>
+        
+        <button onclick="window.print()" class="btn-print">GENERAR PDF MAESTRO</button>
+
+        <footer>
+            <div class="copyright">
+                <a href="mailto:dremeseiro@gmail.com">dremeseiro@gmail.com</a> | 
+                <a href="https://wa.me/34654391870" target="_blank">WhatsApp</a> | 
+                <a href="http://www.danielremeseiro.es" target="_blank">www.danielremeseiro.es</a><br>
+                © DANIEL REMESEIRO · TRIGRAMA VIII A | PROYECTO BULD · 2026<br>
+                A CORUÑA, GALICIA
+            </div>
+        </footer>
+        <div class="page-number"></div>
+    </section>
+</div>
+
+<div id="visor-overlay">
+    <div class="visor-content">
+        <div id="visor-title"></div>
+        <img id="visor-img" src="" alt="Visor">
+        <div id="visor-text"></div>
+        <div class="nav-controls">
+            <button class="nav-btn" onclick="changeImg(-1)">❮</button>
+            <button class="nav-btn" onclick="changeImg(1)">❯</button>
+        </div>
+        <button class="close-btn" onclick="closeVisor()">VOLVER</button>
+    </div>
+</div>
+
+<script>
+    const galleryData = [
+        { src: 'image9.jpg', title: 'EL UMBRAL', text: 'El comienzo del descendimiento en la selva oscura.' },
+        { src: 'image1.jpg', title: 'I. EL LIMBO', text: 'Deseo suspendido en una neblina de baja intensidad.' },
+        { src: 'image3.jpg', title: 'II. LUJURIA', text: 'Torbellino de luces que emula la pasión incesante.' },
+        { src: 'image4.jpg', title: 'III. GULA', text: 'La pesadez de la existencia bajo una lluvia de luz sucia.' },
+        { src: 'image6.jpg', title: 'IV. AVARICIA', text: 'Geometrías de fuerzas opuestas en un ciclo sin fin.' },
+        { src: 'image7.jpg', title: 'V. IRA Y PEREZA', text: 'La luz se vuelve ciénaga; el odio latente del abismo urbano.' },
+        { src: 'image10.jpg', title: 'VI. HEREJÍA', text: 'Trazando caminos que se desvían en un rastro de luz persistente.' },
+        { src: 'image5.jpg', title: 'VII. VIOLENCIA', text: 'Trazos que cortan la composición como cuchillos de luz.' },
+        { src: 'image8.jpg', title: 'VIII. FRAUDE', text: 'Puentes de luz que se rompen; la arquitectura de la mentira.' },
+        { src: 'image2.jpg', title: 'IX. TRAICIÓN', text: 'El frío absoluto del Cocito; donde la deriva se vuelve cristal.' }
+    ];
+
+    let currentIndex = 0;
+
+    function openVisor(index) {
+        currentIndex = index;
+        updateVisor();
+        document.getElementById('visor-overlay').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeVisor() { 
+        document.getElementById('visor-overlay').style.display = 'none'; 
+        document.body.style.overflow = 'auto';
+    }
+
+    function changeImg(step) {
+        currentIndex = (currentIndex + step + galleryData.length) % galleryData.length;
+        updateVisor();
+    }
+
+    function updateVisor() {
+        const data = galleryData[currentIndex];
+        document.getElementById('visor-img').src = data.src;
+        document.getElementById('visor-title').innerText = data.title;
+        document.getElementById('visor-text').innerText = data.text;
+    }
+
+    // Teclado
+    document.addEventListener('keydown', (e) => {
+        if (document.getElementById('visor-overlay').style.display === 'flex') {
+            if (e.key === "Escape") closeVisor();
+            if (e.key === "ArrowLeft") changeImg(-1);
+            if (e.key === "ArrowRight") changeImg(1);
+        }
+    });
+</script>
+</body>
+</html>

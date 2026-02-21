@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DANIEL REMESEIRO | PROYECTO BULD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Courier+Prime&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --accent-color: #666666;
+            --section-bg: #f9f9f9;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0; padding: 0;
+            font-family: 'Lato', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- BOTÓN PANTALLA COMPLETA --- */
+        #fs-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 10000;
+            background: none;
+            border: 1px solid #000;
+            padding: 8px 12px;
+            font-family: 'Courier Prime', monospace;
+            font-size: 10px;
+            letter-spacing: 2px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        #fs-button:hover { background: #000; color: #fff; }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        /* --- SECCIÓN PORTADA E INTRODUCCIÓN --- */
+        .portada-intro {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .tag-autor {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 7px;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .portada-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            letter-spacing: 8px;
+            margin: 0 0 10px 0;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        .img-box-portada {
+            width: 100%;
+            margin: 40px 0;
+            border: 0.5px solid #eee;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        .img-box-portada img { width: 100%; height: auto; display: block; }
+
+        .texto-buld-playfair {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333;
+            text-align: justify;
+            margin-top: 30px;
+        }
+
+        /* --- MENÚ DE SECCIONES --- */
+        .section-header {
+            text-align: left;
+            margin: 80px 0 25px 0;
+            padding-left: 10px;
+            border-left: 3px solid #000;
+        }
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .menu-list { list-style: none; padding: 0; margin: 0; }
+        .menu-item { margin-bottom: 12px; }
+        .menu-link {
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border: 0.5px solid #eee;
+            transition: 0.3s;
+        }
+        .errante-link { background-color: #fff; }
+        .trigrama-link { background-color: var(--section-bg); }
+
+        .menu-link:hover { border-color: #000; transform: translateX(5px); background: #fff; }
+        .link-info span { display: block; font-size: 0.55rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-color); margin-bottom: 4px; }
+        .link-info h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin: 0; font-weight: 400; }
+
+        footer {
+            margin-top: 100px;
+            text-align: center;
+            padding-bottom: 40px;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            line-height: 2;
+        }
+
+        @media (max-width: 480px) {
+            h1, .portada-header h2 { font-size: 1.7rem; letter-spacing: 5px; }
+            #fs-button { top: 10px; left: 10px; padding: 6px 10px; font-size: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+<button id="fs-button" onclick="toggleFullScreen()">Fullscreen</button>
+
+<div class="container">
+    
+    <div id="content-wrapper">
+        <div class="portada-intro">
+            <span class="tag-autor">DANIEL REMESEIRO</span>
+            <header class="portada-header">
+                <h2>Geometrías del Abismo</h2>
+                <div style="font-family:'Courier Prime'; font-size:11px; letter-spacing:3px;">PROYECTO BULD / SOCIEDAD ERRANTE</div>
+            </header>
+
+            <div class="img-box-portada">
+                <img src="portada1.jpg" alt="Daniel Remeseiro">
+            </div>
+
+            <div class="texto-buld-playfair">
+                <p><strong>BULD</strong> no es solo una técnica; es una declaración sobre la esencia de cada imagen. Es el rastro que permanece cuando la forma colapsa y solo queda la emoción pura del movimiento.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-header">
+        <h2>Sociedad Errante</h2>
+        <p style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #666;">Dossiers y Concepto</p>
+    </div>
+    <nav class="menu-list">
+        <div class="menu-item"><a href="banalidad/index.html" class="menu-link errante-link"><div class="link-info"><span>Proyecto I</span><h3>La banalidad del Mal II</h3></div></a></div>
+		
+		<div class="menu-item"><a href="geometrias/index.html" class="menu-link trigrama-link"><div class="link-info"><span>Trigrama VIII A</span><h3>El Infierno de Dante</h3></div></a></div>
+		
+      
+        <div class="menu-item"><a href="cocito/index.html" class="menu-link errante-link"><div class="link-info"><span>Proyecto III</span><h3>Cocito "El Infierno"</h3></div></a></div>
+        <div class="menu-item"><a href="sociedaderrante/index.html" class="menu-link errante-link"><div class="link-info"><span>Manifiesto</span><h3>Dosier Guy Debord</h3></div></a></div>
+    </nav>
+
+    <div class="section-header">
+        <h2>Serie Trigramas</h2>
+        <p style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #666;">Unidades Narrativas Mínimas</p>
+    </div>
+    <nav class="menu-list">
+        <div class="menu-item"><a href="trigrama1/index.html" class="menu-link trigrama-link"><div class="link-info"><span>Trigrama I</span><h3>Dormir</h3></div></a></div>
+        <div class="menu-item"><a href="trigrama3/index.html" class="menu-link trigrama-link"><div class="link-info"><span>Trigrama III</span><h3>OJO</h3></div></a></div>
+        <div class="menu-item"><a href="trigrama4/index.html" class="menu-link trigrama-link"><div class="link-info"><span>Trigrama IV</span><h3>Andar</h3></div></a></div>
+        <div class="menu-item"><a href="trigrama7/index.html" class="menu-link trigrama-link"><div class="link-info"><span>Trigrama VII</span><h3>El Umbral</h3></div></a></div>
+        
+        <div class="menu-item"><a href="trigrama11/index.html" class="menu-link trigrama-link"><div class="link-info"><span>Trigrama XI</span><h3>Cronografía de un Sueño I</h3></div></a></div>
+        <div class="menu-item"><a href="trigrama12/index.html" class="menu-link trigrama-link"><div class="link-info"><span>Trigrama XII</span><h3>Cronografía de un sueño II</h3></div></a></div>
+    </nav>
+
+    <div style="text-align: center; margin-top: 60px;">
+        <a href="contacto/index.html" style="text-decoration:none; border: 1px solid #000; padding: 15px 40px; color: #000; font-size: 11px; letter-spacing: 3px; text-transform: uppercase;">Contacto</a>
+    </div>
+
+    <footer>
+        © DANIEL REMESEIRO · 2026<br>
+        A CORUÑA, GALICIA<br>
+        WWW.DANIELREMESEIRO.ES
+    </footer>
+</div>
+
+<script>
+    function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+            document.getElementById('fs-button').innerText = "Salir";
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+                document.getElementById('fs-button').innerText = "Fullscreen";
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

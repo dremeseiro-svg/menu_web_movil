@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CONTACTO | DANIEL REMESEIRO - Sociedad Errante</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Courier+Prime&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --main-bg: #ffffff; 
+            --text-color: #000000; 
+            --accent-color: #555555; 
+        }
+        * { box-sizing: border-box; -webkit-print-color-adjust: exact; }
+
+        /* BOTÓN RETORNO MAESTRO */
+        #back-button {
+            position: fixed; top: 15px; right: 15px; z-index: 99999;
+            background: #fff; border: 1px solid #000; padding: 10px 15px;
+            font-family: 'Courier Prime', monospace; font-size: 10px;
+            letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+            color: #000; box-shadow: 2px 2px 0px #000; transition: all 0.2s ease;
+        }
+        #back-button:hover { background: #000; color: #fff; box-shadow: 0px 0px 0px #000; transform: translateY(2px); }
+
+        body { 
+            margin: 0; padding: 0; 
+            background-color: #f4f4f4; 
+            font-family: 'Lato', sans-serif; 
+            display: flex; justify-content: center;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ANCHO ADAPTADO A TELÉFONO */
+        .page { 
+            width: 95%; max-width: 210mm; min-height: 296.5mm; background: var(--main-bg); 
+            margin: 20px 0; padding: 15mm; position: relative; 
+            display: flex; flex-direction: column; box-shadow: 0 0 30px rgba(0,0,0,0.1); 
+        }
+
+        h2 { 
+            font-family: 'Playfair Display', serif; 
+            text-transform: uppercase; letter-spacing: 8px; 
+            font-weight: 400; font-size: 1.8rem; 
+            border-bottom: 1px solid #eee; padding-bottom: 20px; margin-bottom: 40px; 
+            text-align: center;
+        }
+
+        .contact-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h3 { 
+            font-family: 'Lato', sans-serif; 
+            font-size: 0.8rem; text-transform: uppercase; 
+            letter-spacing: 4px; margin-bottom: 10px; font-weight: 700; 
+            color: var(--accent-color);
+        }
+
+        .address {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            text-align: center;
+            margin-bottom: 10px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .appointment-note {
+            font-family: 'Lato', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #888;
+            margin-bottom: 35px;
+            border: 1px solid #eee;
+            padding: 8px 15px;
+        }
+
+        .map-wrapper {
+            width: 100%;
+            height: 400px;
+            background: #eee;
+            margin-bottom: 50px;
+            border: 1px solid #eee;
+            overflow: hidden;
+            filter: grayscale(1) contrast(1.1);
+            transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .map-wrapper:hover { filter: grayscale(0) contrast(1); }
+        iframe { width: 100%; height: 100%; border: 0; }
+
+        footer { 
+            text-align: center; 
+            font-family: 'Courier Prime', monospace; font-size: 0.65rem; 
+            letter-spacing: 2px; color: var(--accent-color); 
+            text-transform: uppercase; border-top: 0.5px solid #eee; padding-top: 30px; 
+            line-height: 1.8;
+        }
+        .footer-links { margin: 15px 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .footer-links a { color: #000; text-decoration: none; font-weight: 700; border-bottom: 1px solid #ddd; }
+
+        @media (max-width: 600px) {
+            .page { padding: 10mm; margin: 10px 0; }
+            h2 { font-size: 1.4rem; letter-spacing: 4px; }
+            .address { font-size: 1.1rem; }
+            .map-wrapper { height: 300px; }
+        }
+
+        @media print {
+            #back-button { display: none !important; }
+            body { background: white; }
+            .page { margin: 0; box-shadow: none; width: 210mm; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="../index.html" id="back-button">↩ MENU</a>
+
+    <section class="page">
+        <h2>Contacto</h2>
+        
+        <div class="contact-content">
+            <h3>Taller Daniel Remeseiro</h3>
+            <p class="address">
+                Rúa Ángel Rebollo 79, Bajo<br>
+                15002 A Coruña, Galicia, España
+            </p>
+            
+            <div class="appointment-note">
+                Visitas bajo cita previa.
+            </div>
+
+            <div class="map-wrapper">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1m3!1d2900.551221434224!2d-8.40114!3d43.37528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2e7cf07470f5d5%3A0x633510c4f9814562!2sR%C3%BAa%20%C3%81ngel%20Rebollo%2C%2079%2C%2015002%20A%20Coru%C3%B1a!5e0!3m2!1ses!2ses!4v1700000000000" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+
+        <footer>
+            DANIEL REMESEIRO · PROYECTO BULD<br>
+            A CORUÑA, GALICIA
+            <div class="footer-links">
+                <a href="mailto:dremeseiro@gmail.com">dremeseiro@gmail.com</a>
+                <a href="https://wa.me/34654391870" target="_blank">WhatsApp</a>
+                <a href="http://www.danielremeseiro.es" target="_blank">www.danielremeseiro.es</a>
+            </div>
+            <div style="margin-top: 10px; font-weight: 700; color: #000;">© Daniel Remeseiro FEBRERO 2026</div>
+        </footer>
+    </section>
+
+</body>
+</html>
